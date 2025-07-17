@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Manav Patel | CAD & 3D Printing</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #0f0f0f;
+      color: #00ff88;
+      line-height: 1.6;
+    }
+    header {
+      background: linear-gradient(to right, #000, #004d3f);
+      padding: 30px 20px;
+      text-align: center;
+      font-size: 2.5em;
+      font-family: 'Orbitron', sans-serif;
+      color: #00ff88;
+      border-bottom: 3px solid #00ff88;
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      background-color: #111;
+      padding: 15px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    nav a {
+      color: #00ff88;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 8px 12px;
+      border: 1px solid transparent;
+      border-radius: 5px;
+      transition: 0.3s ease;
+    }
+    nav a:hover {
+      background-color: #00ff88;
+      color: #000;
+      border-color: #00ff88;
+    }
+    .container {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 0 25px;
+    }
+    h2 {
+      color: #00ff88;
+      border-bottom: 2px solid #00ff88;
+      padding-bottom: 5px;
+      margin-bottom: 20px;
+    }
+    .card {
+      background-color: #1a1a1a;
+      padding: 20px;
+      border: 1px solid #00ff88;
+      border-radius: 10px;
+      margin-bottom: 25px;
+      box-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
+      transition: transform 0.3s ease;
+    }
+    .card:hover {
+      transform: scale(1.02);
+    }
+    .image-container {
+      position: relative;
+      width: 100%;
+      height: 250px;
+      overflow: hidden;
+    }
+    .image-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      border: 1px solid #00ff88;
+      border-radius: 8px;
+      display: block;
+      background-color: #222;
+    }
+    .toggle-button {
+      background-color: #00ff88;
+      color: #000;
+      border: none;
+      padding: 8px 14px;
+      font-weight: bold;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: background-color 0.3s ease;
+    }
+    .toggle-button:hover {
+      background-color: #00cc6e;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+    }
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #000;
+      color: #00ff88;
+      border-top: 2px solid #00ff88;
+      margin-top: 40px;
+    }
+    .button {
+      display: inline-block;
+      background-color: #00ff88;
+      color: #000;
+      padding: 10px 18px;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      margin-top: 10px;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+    }
+    .button:hover {
+      background-color: #00cc6e;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    Manav Patel | CAD Modeling & 3D Printing
+  </header>
+  <nav>
+    <a href="#about">About</a>
+    <a href="#business">How I Help</a>
+    <a href="#portfolio">Portfolio</a>
+    <a href="#stakeholders">Stakeholders</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <div class="container">
+    <section id="about">
+      <h2>About Me</h2>
+      <p>I’m <strong>Manav Patel</strong>, an end-to-end CAD designer and 3D printing technician. I bring your creative and industrial ideas to life using advanced modeling tools like <strong>Fusion 360</strong> and <strong>SolidWorks</strong>, combined with hands-on 3D printing experience. My designs are not only functional but manufacturable, tested, and refined to support innovation across businesses, startups, and makerspaces.</p>
+    </section>
+
+    <section id="business">
+      <h2>How I Help Businesses</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Design Optimization</h3>
+          <p>I create 3D models that are engineered for performance, ease of printing, and cost-efficiency. Whether you need ergonomic tools or brand merch, I help refine ideas into ready-to-print designs.</p>
+        </div>
+        <div class="card">
+          <h3>Prototyping</h3>
+          <p>Using my own 3D printer, I quickly iterate, test, and validate models to avoid costly manufacturing errors. Clients receive real-world results fast.</p>
+        </div>
+        <div class="card">
+          <h3>Production Support</h3>
+          <p>I export files in STL, STEP, and OBJ formats with accurate tolerances — ready for CNC machining, injection molding, or FDM/Resin printing workflows.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="portfolio">
+      <h2>Projects</h2>
+
+      <div class="card">
+        <h3>Sewage Cleaning Robot Camera Mount</h3>
+        <p>A durable and practical camera mount designed for robotic sewage cleaning systems. Engineered to handle tough environments.</p>
+        <div class="image-container" id="img1">
+          <img src="images/joshmodel.jpeg" alt="Camera Mount CAD Model">
+        </div>
+        <button class="toggle-button" onclick="toggleImage('img1', 'images/joshmodel.jpeg', 'images/josh3dprint.jpeg')">Show 3D Print</button>
+      </div>
+
+      <div class="card">
+        <h3>Screwdriver Handle</h3>
+        <p>Ergonomic screwdriver design for better grip and control. Ideal for compact toolkits and home use.</p>
+        <div class="image-container" id="img2">
+          <img src="images/screwdrivermodel.jpeg" alt="Screwdriver CAD Model">
+        </div>
+        <button class="toggle-button" onclick="toggleImage('img2', 'images/screwdrivermodel.jpeg', 'images/screwdriver3dprint.jpeg')">Show 3D Print</button>
+      </div>
+
+      <div class="card">
+        <h3>Box Cutter Housing</h3>
+        <p>Lightweight and functional case for a retractable blade cutter. Designed for both safety and style.</p>
+        <div class="image-container" id="img3">
+          <img src="images/cuttermodel.jpeg" alt="Box Cutter CAD Model">
+        </div>
+        <button class="toggle-button" onclick="toggleImage('img3', 'images/cuttermodel.jpeg', 'images/cutter3dprint.jpeg')">Show 3D Print</button>
+      </div>
+    </section>
+
+    <section id="stakeholders">
+      <h2>Stakeholder Focus</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>For Businesses</h3>
+          <p>Prototype new product ideas quickly without investing in large-scale production. Visualize, test, and pitch with printed samples.</p>
+        </div>
+        <div class="card">
+          <h3>For Engineers</h3>
+          <p>Get simulation-ready models with detailed tolerances, exploded views, and export formats ready for manufacturing pipelines.</p>
+        </div>
+        <div class="card">
+          <h3>For Startups</h3>
+          <p>From napkin sketch to MVP — I offer affordable, hands-on support for product development, mockups, and investor demos.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>Contact Me</h2>
+      <p>If you're interested in collaborating, commissioning a part, or need help visualizing your design — let's connect!</p>
+      <p><strong>Email:</strong> <a href="mailto:manavpatel02201@gmail.com" style="color:#00ff88;">manavpatel02201@gmail.com</a></p>
+      <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/manavpatel351/" style="color:#00ff88;">/manavpatel351</a></p>
+    
+      <a class="button" href="mailto:manavpatel02201@gmail.com">Send Inquiry</a>
+    </section>
+  </div>
+  <footer>
+    &copy; 2025 Manav Patel | CAD Modeling & 3D Printing — All Rights Reserved
+  </footer>
+
+  <script>
+    function toggleImage(containerId, modelSrc, printSrc) {
+      const container = document.getElementById(containerId);
+      const img = container.querySelector('img');
+      const currentSrc = img.getAttribute('src');
+      img.setAttribute('src', currentSrc === modelSrc ? printSrc : modelSrc);
+    }
+  </script>
+</body>
+</html>
