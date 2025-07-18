@@ -6,103 +6,317 @@
   <title>Manav Patel | CAD & 3D Printing</title>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
   <style>
-    body {
+    html, body {
       margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      overflow-x: hidden;
       font-family: 'Segoe UI', sans-serif;
-      background-color: #0f0f0f;
+    }
+    body {
+      background: linear-gradient(-45deg, #0f0f0f, #003322, #003344, #00ff88);
+      background-size: 400% 400%;
+      animation: gradientMove 12s ease-in-out infinite;
       color: #00ff88;
       line-height: 1.6;
     }
+    @keyframes gradientMove {
+      0% { background-position: 0% 50%;}
+      50% { background-position: 100% 50%;}
+      100% { background-position: 0% 50%;}
+    }
+    .bg-shape, .bg-shape2 {
+      position: fixed;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 0;
+      filter: blur(65px);
+      opacity: 0.29;
+    }
+    .bg-shape {
+      background: #00ff88;
+      width: 240px; height: 240px;
+      top: 12vh; left: -90px;
+      animation: floatShape 18s infinite alternate cubic-bezier(.6,0,.4,1);
+    }
+    .bg-shape2 {
+      background: #005c45;
+      width: 180px; height: 180px;
+      top: 74vh; left: 65vw;
+      animation: floatShape2 21s infinite alternate cubic-bezier(.7,0,.4,1);
+    }
+    @keyframes floatShape {
+      0% { top:12vh; left: -90px; }
+      50% { top: 48vh; left: 52vw;}
+      100% { top: 67vh; left: 88vw;}
+    }
+    @keyframes floatShape2 {
+      0% { top:74vh; left: 65vw;}
+      70% { top: 37vh; left: 10vw;}
+      100% { top: 90vh; left: 35vw;}
+    }
     header {
-      background: linear-gradient(to right, #000, #004d3f);
-      padding: 30px 20px;
+      background: rgba(0,0,0,0.93);
+      padding: 35px 20px 28px 20px;
       text-align: center;
       font-size: 2.5em;
       font-family: 'Orbitron', sans-serif;
       color: #00ff88;
       border-bottom: 3px solid #00ff88;
+      position: relative;
+      z-index: 2;
+      letter-spacing: 1px;
+      box-shadow: 0 3px 28px rgba(0, 255, 136, 0.09);
     }
     nav {
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
-      gap: 20px;
+      gap: 24px;
       background-color: #111;
-      padding: 15px;
+      padding: 17px 0;
       position: sticky;
       top: 0;
-      z-index: 100;
+      z-index: 2;
     }
     nav a {
       color: #00ff88;
       text-decoration: none;
       font-weight: bold;
-      padding: 8px 12px;
+      padding: 10px 16px;
       border: 1px solid transparent;
-      border-radius: 5px;
-      transition: 0.3s ease;
+      border-radius: 6px;
+      font-size: 1em;
+      transition: box-shadow 0.2s, color 0.3s, border-color 0.3s, background 0.4s;
+      position: relative;
+      overflow: hidden;
     }
-    nav a:hover {
-      background-color: #00ff88;
+    nav a::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%) scaleX(0);
+      bottom: 0;
+      width: 80%;
+      height: 2px;
+      background: linear-gradient(to right,#00ff88, #00b066, #00ff88);
+      border-radius: 3px;
+      transition: transform 0.4s cubic-bezier(.5,1.6,.4,.7);
+    }
+    nav a:hover::before, nav a:focus::before {transform: translateX(-50%) scaleX(1);}
+    nav a:hover, nav a:focus {
+      background: #00ff88;
       color: #000;
       border-color: #00ff88;
+      outline: none;
+      box-shadow: 0 2px 14px #00ff8844;
     }
     .container {
-      max-width: 1000px;
-      margin: 40px auto;
-      padding: 0 25px;
+      max-width: 1050px;
+      margin: 45px auto 0 auto;
+      padding: 0 25px 30px 25px;
+      position: relative;
+      z-index: 2;
+    }
+    section {
+      background: rgba(20,20,20,0.97);
+      border-radius: 10px;
+      padding: 35px 25px 30px 25px;
+      margin-bottom: 36px;
+      box-shadow: 0 4px 12px rgba(0,255,136,0.09);
+      position: relative;
+      z-index: 1;
     }
     h2 {
       color: #00ff88;
-      border-bottom: 2px solid #00ff88;
-      padding-bottom: 5px;
-      margin-bottom: 20px;
-    }
-    .card {
-      background-color: #1a1a1a;
-      padding: 20px;
-      border: 1px solid #00ff88;
-      border-radius: 10px;
-      margin-bottom: 25px;
-      box-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
-      transition: transform 0.3s ease;
-    }
-    .card:hover {
-      transform: scale(1.02);
-    }
-    .image-container {
+      font-size: 2em;
       position: relative;
-      width: 100%;
-      height: 250px;
-      overflow: hidden;
+      display: inline-block;
+      padding-bottom: 8px;
+      margin-bottom: 22px;
+      transition: color 0.27s;
+      letter-spacing: 1px;
     }
-    .image-container img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      border: 1px solid #00ff88;
-      border-radius: 8px;
+    h2::after {
+      content: '';
       display: block;
-      background-color: #222;
+      width: 0;
+      height: 3px;
+      background: linear-gradient(90deg,#00ff88, #00b066 65%,#00ff88 100%);
+      border-radius: 2px;
+      position: absolute;
+      bottom: 0; left: 0;
+      transition: width 0.65s cubic-bezier(.31,1.32,1,1);
     }
-    .toggle-button {
-      background-color: #00ff88;
-      color: #000;
-      border: none;
-      padding: 8px 14px;
-      font-weight: bold;
-      border-radius: 6px;
-      cursor: pointer;
-      margin-top: 10px;
-      transition: background-color 0.3s ease;
+    section:hover h2::after, .project-grid:hover h2::after {
+      width: 90%;
     }
-    .toggle-button:hover {
-      background-color: #00cc6e;
+    .fade-in {
+      opacity: 0;
+      transform: translateY(60px) scale(.98);
+      animation: fadeInUp 1.1s cubic-bezier(.77,0,.18,1.01) forwards;
+      animation-play-state: paused;
+    }
+    @keyframes fadeInUp {
+      to { opacity: 1; transform: none;}
     }
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 20px;
+      gap: 22px;
+    }
+    .card {
+      background-color: #1a1a1a;
+      padding: 23px 18px;
+      border: 1px solid #00ff88;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,255,136,0.12);
+      transition: transform 0.3s cubic-bezier(.4,2,.3,1), box-shadow 0.3s;
+    }
+    .card:hover {
+      transform: scale(1.08) rotate(-1.2deg);
+      box-shadow: 0 15px 30px 0 rgba(0,255,136,0.27);
+    }
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+      gap: 24px;
+      margin-bottom: 36px;
+    }
+    .project-card {
+      background: #161616;
+      border: 1px solid #00ff88;
+      border-radius: 13px;
+      box-shadow: 0 0 13px 0 rgba(0,255,136,0.18);
+      min-height: 420px;
+      perspective: 900px;
+      transition: box-shadow 0.35s;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      /* fade-in prep */
+      opacity: 0;
+      transform: translateY(80px) scale(.96) rotateX(7deg);
+      animation: fadeInCard 1.1s cubic-bezier(.4,2,.2,1) forwards;
+      animation-play-state: paused;
+    }
+    .project-card:hover, .project-card:focus-within {
+      box-shadow: 0 16px 40px 0 rgba(0,255,136,0.31);
+    }
+    .project-card-inner {
+      transition: transform 0.8s cubic-bezier(.33,1.53,.44,0.91);
+      transform-style: preserve-3d;
+      min-height: 320px; flex-grow: 1;
+      position: relative;
+    }
+    .project-card:hover .project-card-inner,
+    .project-card:focus-within .project-card-inner {
+      transform: rotateY(180deg);
+    }
+    .project-card-front, .project-card-back {
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      backface-visibility: hidden;
+      border-radius: 13px;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+    }
+    .project-card-back {
+      background: #172922;
+      color: #fff;
+      border: 1px solid #00ff88;
+      transform: rotateY(180deg);
+      z-index: 2;
+      justify-content: center; align-items: center;
+    }
+    .project-card-front { z-index: 1;}
+    .project-title {
+      font-size: 1.3em;
+      margin-bottom: 9px;
+      color: #00ff88;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      margin-top: 13px;
+    }
+    .project-desc {
+      flex-grow: 1;
+      margin-bottom: 15px;
+      font-size: 1em;
+      letter-spacing: 0.02em;
+      color: #c9ffd6;
+    }
+    .project-image-container {
+      position: relative;
+      width: 100%;
+      padding-top: 60%;
+      overflow: hidden;
+      border-radius: 8px;
+      border: 1px solid #00ff88;
+      background-color: #222;
+      margin-bottom: 13px;
+      box-shadow: 0 0 8px rgba(0,255,136,0.07);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .project-image-container img, .project-image-container video {
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      object-fit: contain;
+      border-radius: 8px;
+    }
+    @keyframes fadeInCard {
+      to { opacity:1; transform: none;}
+    }
+    .toggle-button, .button {
+      background-color: #00ff88;
+      color: #000;
+      border: none;
+      padding: 9px 18px;
+      font-weight: bold;
+      border-radius: 7px;
+      cursor: pointer;
+      margin-top: auto;
+      font-size: 1em;
+      margin-bottom: 0;
+      position: relative;
+      z-index: 1;
+      overflow: hidden;
+      transition: background 0.33s, color 0.23s, box-shadow 0.23s;
+      box-shadow: 0 1px 4px #00ff8840;
+      outline: none;
+    }
+    .toggle-button:hover, .toggle-button:focus, .button:hover, .button:focus {
+      background-color: #00cc6e;
+      color: #fff;
+      animation: bubble 0.55s;
+    }
+    @keyframes bubble {
+      0%   { box-shadow: 0 0 0 0 #00ff8877; }
+      70%  { box-shadow: 0 0 36px 15px #00ff8800; }
+      100% { box-shadow: 0 0 0 0 #00ff8800; }
+    }
+    .video-container {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0; overflow: hidden;
+      margin-bottom: 19px;
+      border-radius: 13px;
+      border: 1px solid #00ff88;
+      box-shadow: 0 2px 13px rgba(0,255,136,0.11);
+      background: #141d15;
+    }
+    .video-container iframe, .video-container video {
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      border: none;
+      border-radius: 13px;
+    }
+    .contact-info a {
+      color: #00ff88;
+      text-decoration: underline;
+      word-break: break-all;
     }
     footer {
       text-align: center;
@@ -111,25 +325,23 @@
       color: #00ff88;
       border-top: 2px solid #00ff88;
       margin-top: 40px;
+      font-size: 1.03em;
+      position: relative;
+      z-index: 2;
     }
-    .button {
-      display: inline-block;
-      background-color: #00ff88;
-      color: #000;
-      padding: 10px 18px;
-      border: none;
-      border-radius: 5px;
-      font-weight: bold;
-      margin-top: 10px;
-      text-decoration: none;
-      transition: background-color 0.3s ease;
-    }
-    .button:hover {
-      background-color: #00cc6e;
+    @media (max-width: 640px) {
+      header { font-size: 1.3em; padding: 17px 4vw; }
+      .container { padding: 0 4vw 12vw 4vw; }
+      section { padding: 18px 7px 18px 7px; }
+      .grid, .project-grid { grid-template-columns: 1fr; gap: 18px; }
+      .project-card { min-height: 300px; }
+      nav { gap: 8px; padding: 8px 0; }
     }
   </style>
 </head>
 <body>
+  <div class="bg-shape"></div>
+  <div class="bg-shape2"></div>
   <header>
     Manav Patel | CAD Modeling & 3D Printing
   </header>
@@ -137,102 +349,183 @@
     <a href="#about">About</a>
     <a href="#business">How I Help</a>
     <a href="#portfolio">Portfolio</a>
+    <a href="#printing-videos">Printing Videos</a>
     <a href="#stakeholders">Stakeholders</a>
     <a href="#contact">Contact</a>
   </nav>
   <div class="container">
-    <section id="about">
+    <section id="about" class="fade-in">
       <h2>About Me</h2>
-      <p>I’m <strong>Manav Patel</strong>, an end-to-end CAD designer and 3D printing technician. I bring your creative and industrial ideas to life using advanced modeling tools like <strong>Fusion 360</strong> and <strong>SolidWorks</strong>, combined with hands-on 3D printing experience. My designs are not only functional but manufacturable, tested, and refined to support innovation across businesses, startups, and makerspaces.</p>
+      <p>
+        I’m <strong>Manav Patel</strong>, an end-to-end CAD designer and 3D printing technician. I bring your creative and industrial ideas to life using advanced modeling tools like <strong>Fusion 360</strong> and <strong>SolidWorks</strong>, combined with hands-on 3D printing experience. My designs are functional, manufacturable, tested, and refined to support innovation across businesses, startups, and makerspaces.
+      </p>
+      <div style="margin:28px 0; text-align:center;">
+        <!-- Your actual 3D printing setup image -->
+        <img 
+          src="images/WhatsApp Image 2025-07-18 at 1.54.10 PM.jpeg"
+          alt="Manav Patel's 3D Printing Setup"
+          style="max-width:350px;width:90%;border-radius:13px;border:2px solid #00ff88;box-shadow:0 6px 24px rgba(0,255,136,0.09);" 
+        />
+        <p style="font-size:0.97em;color:#ccffd6;margin-top:10px;">
+          My 3D printing setup in action.
+        </p>
+      </div>
     </section>
 
-    <section id="business">
+    <section id="business" class="fade-in">
       <h2>How I Help Businesses</h2>
       <div class="grid">
-        <div class="card">
+        <div class="card fade-in">
           <h3>Design Optimization</h3>
-          <p>I create 3D models that are engineered for performance, ease of printing, and cost-efficiency. Whether you need ergonomic tools or brand merch, I help refine ideas into ready-to-print designs.</p>
+          <p>
+            I create 3D models that are engineered for performance, ease of printing, and cost-efficiency. Whether you need ergonomic tools or brand merch, I help refine ideas into ready-to-print designs.
+          </p>
         </div>
-        <div class="card">
+        <div class="card fade-in" style="animation-delay:0.18s;">
           <h3>Prototyping</h3>
-          <p>Using my own 3D printer, I quickly iterate, test, and validate models to avoid costly manufacturing errors. Clients receive real-world results fast.</p>
+          <p>
+            Using my own 3D printer, I quickly iterate, test, and validate models to avoid costly manufacturing errors. Clients receive real-world results fast.
+          </p>
         </div>
-        <div class="card">
+        <div class="card fade-in" style="animation-delay:0.37s;">
           <h3>Production Support</h3>
-          <p>I export files in STL, STEP, and OBJ formats with accurate tolerances — ready for CNC machining, injection molding, or FDM/Resin printing workflows.</p>
+          <p>
+            I export files in STL, STEP, and OBJ formats with accurate tolerances — ready for CNC machining, injection molding, or FDM/Resin printing workflows.
+          </p>
         </div>
       </div>
     </section>
 
-    <section id="portfolio">
+    <section id="portfolio" class="fade-in">
       <h2>Projects</h2>
-
-      <div class="card">
-        <h3>Sewage Cleaning Robot Camera Mount</h3>
-        <p>A durable and practical camera mount designed for robotic sewage cleaning systems. Engineered to handle tough environments.</p>
-        <div class="image-container" id="img1">
-          <img src="images/joshmodel.jpeg" alt="Camera Mount CAD Model">
+      <div class="project-grid">
+        <!-- Your project cards ... unchanged ... -->
+        <div class="project-card" tabindex="0" style="animation-delay:0.3s;">
+          <div class="project-card-inner">
+            <div class="project-card-front">
+              <div class="project-title">Sewage Cleaning Robot Camera Mount</div>
+              <div class="project-desc">A durable and practical camera mount designed for robotic sewage cleaning systems. Engineered to handle tough environments.</div>
+              <div class="project-image-container">
+                <img src="images/joshmodel.jpeg" alt="Camera Mount CAD Model" />
+              </div>
+            </div>
+            <div class="project-card-back">
+              <div class="project-title">Assembly 3D Print</div>
+              <div class="project-image-container">
+                <img src="images/josh3dprint.jpeg" alt="Camera Mount 3D Printed" />
+              </div>
+              <p>Ready for the sewers! High-strength plastic, tested fit.</p>
+            </div>
+          </div>
         </div>
-        <button class="toggle-button" onclick="toggleImage('img1', 'images/joshmodel.jpeg', 'images/josh3dprint.jpeg')">Show 3D Print</button>
-      </div>
-
-      <div class="card">
-        <h3>Screwdriver Handle</h3>
-        <p>Ergonomic screwdriver design for better grip and control. Ideal for compact toolkits and home use.</p>
-        <div class="image-container" id="img2">
-          <img src="images/screwdrivermodel.jpeg" alt="Screwdriver CAD Model">
+        <div class="project-card" tabindex="0" style="animation-delay:0.5s;">
+          <div class="project-card-inner">
+            <div class="project-card-front">
+              <div class="project-title">Screwdriver Handle</div>
+              <div class="project-desc">Ergonomic screwdriver design for better grip and control. Ideal for compact toolkits and home use.</div>
+              <div class="project-image-container">
+                <img src="images/screwdrivermodel.jpeg" alt="Screwdriver CAD Model" />
+              </div>
+            </div>
+            <div class="project-card-back">
+              <div class="project-title">Printed Prototype</div>
+              <div class="project-image-container">
+                <img src="images/screwdriver3dprint.jpeg" alt="Screwdriver 3D Print" />
+              </div>
+              <p>Printed with tactile TPU rubber for added comfort!</p>
+            </div>
+          </div>
         </div>
-        <button class="toggle-button" onclick="toggleImage('img2', 'images/screwdrivermodel.jpeg', 'images/screwdriver3dprint.jpeg')">Show 3D Print</button>
-      </div>
-
-      <div class="card">
-        <h3>Box Cutter Housing</h3>
-        <p>Lightweight and functional case for a retractable blade cutter. Designed for both safety and style.</p>
-        <div class="image-container" id="img3">
-          <img src="images/cuttermodel.jpeg" alt="Box Cutter CAD Model">
+        <div class="project-card" tabindex="0" style="animation-delay:0.7s;">
+          <div class="project-card-inner">
+            <div class="project-card-front">
+              <div class="project-title">Box Cutter Housing</div>
+              <div class="project-desc">Lightweight and functional case for a retractable blade cutter. Designed for both safety and style.</div>
+              <div class="project-image-container">
+                <img src="images/cuttermodel.jpeg" alt="Box Cutter CAD Model" />
+              </div>
+            </div>
+            <div class="project-card-back">
+              <div class="project-title">Print Sample</div>
+              <div class="project-image-container">
+                <img src="images/cutter3dprint.jpeg" alt="Box Cutter 3D Print" />
+              </div>
+              <p>Durable PLA shell, easily assembled and used.</p>
+            </div>
+          </div>
         </div>
-        <button class="toggle-button" onclick="toggleImage('img3', 'images/cuttermodel.jpeg', 'images/cutter3dprint.jpeg')">Show 3D Print</button>
       </div>
     </section>
 
-    <section id="stakeholders">
+    <section id="printing-videos" class="fade-in">
+      <h2>3D Printing Videos</h2>
+      <!-- Local video demo: using your actual file -->
+      <div class="video-container fade-in">
+        <video controls poster="images/WhatsApp Image 2025-07-18 at 1.54.10 PM.jpeg">
+          <source src="videos/WhatsApp Video 2025-07-18 at 1.54.09 PM.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
+      <p style="color:#c1fbd6;font-size:1.01em;margin:13px 0 0 0;">
+        See my 3D printer in action
+      </p>
+    </section>
+
+    <section id="stakeholders" class="fade-in">
       <h2>Stakeholder Focus</h2>
       <div class="grid">
-        <div class="card">
+        <div class="card fade-in">
           <h3>For Businesses</h3>
-          <p>Prototype new product ideas quickly without investing in large-scale production. Visualize, test, and pitch with printed samples.</p>
+          <p>
+            Prototype new product ideas quickly without investing in large-scale production. Visualize, test, and pitch with printed samples.
+          </p>
         </div>
-        <div class="card">
+        <div class="card fade-in" style="animation-delay:0.10s;">
           <h3>For Engineers</h3>
-          <p>Get simulation-ready models with detailed tolerances, exploded views, and export formats ready for manufacturing pipelines.</p>
+          <p>
+            Get simulation-ready models with detailed tolerances, exploded views, and export formats ready for manufacturing pipelines.
+          </p>
         </div>
-        <div class="card">
+        <div class="card fade-in" style="animation-delay:0.16s;">
           <h3>For Startups</h3>
-          <p>From napkin sketch to MVP — I offer affordable, hands-on support for product development, mockups, and investor demos.</p>
+          <p>
+            From napkin sketch to MVP — I offer affordable, hands-on support for product development, mockups, and investor demos.
+          </p>
         </div>
       </div>
     </section>
 
-    <section id="contact">
+    <section id="contact" class="fade-in">
       <h2>Contact Me</h2>
       <p>If you're interested in collaborating, commissioning a part, or need help visualizing your design — let's connect!</p>
-      <p><strong>Email:</strong> <a href="mailto:manavpatel02201@gmail.com" style="color:#00ff88;">manavpatel02201@gmail.com</a></p>
-      <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/manavpatel351/" style="color:#00ff88;">/manavpatel351</a></p>
-    
+      <div class="contact-info">
+        <p><strong>Email:</strong> <a href="mailto:manavpatel02201@gmail.com">manavpatel02201@gmail.com</a></p>
+        <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/manavpatel351/" target="_blank">/manavpatel351</a></p>
+     
+      </div>
       <a class="button" href="mailto:manavpatel02201@gmail.com">Send Inquiry</a>
     </section>
   </div>
   <footer>
     &copy; 2025 Manav Patel | CAD Modeling & 3D Printing — All Rights Reserved
   </footer>
-
   <script>
-    function toggleImage(containerId, modelSrc, printSrc) {
-      const container = document.getElementById(containerId);
-      const img = container.querySelector('img');
-      const currentSrc = img.getAttribute('src');
-      img.setAttribute('src', currentSrc === modelSrc ? printSrc : modelSrc);
-    }
+    document.addEventListener("DOMContentLoaded", function() {
+      let fadeElems = Array.from(document.querySelectorAll('.fade-in, .project-card'));
+      let delay = 0.10;
+      fadeElems.forEach(function(elem, i) {
+        elem.style.animationDelay = elem.style.animationDelay || (i*delay+'s');
+      });
+      function handleFadeIn() {
+        fadeElems.forEach(function(el) {
+          const rect = el.getBoundingClientRect();
+          if (rect.top < window.innerHeight - 80) el.style.animationPlayState = "running";
+        });
+      }
+      fadeElems.forEach(el => el.style.animationPlayState = "paused");
+      window.addEventListener('scroll', handleFadeIn);
+      handleFadeIn();
+    });
   </script>
 </body>
 </html>
